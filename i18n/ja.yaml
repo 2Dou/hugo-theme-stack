@@ -30,6 +30,13 @@ article:
     readingTime:
         other: "読了時間: {{ .Count }}分"
 
+## PAGINATION ##
+pagination:
+    newer_posts: 新しい投稿
+    older_posts: 古い投稿
+    previous: 前
+    next: 次
+
 notFound:
     title:
         other: 404 Not Found

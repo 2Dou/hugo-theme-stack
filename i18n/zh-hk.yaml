@@ -33,6 +33,13 @@ article:
         one: "需要 {{ .Count }} 分鐘閱讀"
         other: "需要 {{ .Count }} 分鐘閱讀"
 
+## PAGINATION ##
+pagination:
+    newer_posts: 上一頁
+    older_posts: 下一頁
+    previous: 上一篇
+    next: 下一篇
+
 notFound:
     title:
         other: Not Found

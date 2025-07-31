@@ -27,10 +27,18 @@ article:
         other: Также рекомендуем
     lastUpdatedOn:
         other: Обновлено
-    tableOfContents: 
+    tableOfContents:
         other: Содержание
-    readingTime: 
+    readingTime:
         other: "Время чтения: {{ .Count }} мин."
+
+## PAGINATION ##
+pagination:
+    newer_posts: Новые статьи
+    older_posts: Старые статьи
+    previous: Пред.
+    next: След.
+
 
 notFound:
     title:

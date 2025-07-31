@@ -1,0 +1,15 @@
+{{ with .Params.music}}
+<audio controls autoplay style="width: 100%;">
+    <source src="{{ $.Params.music }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<script>
+    // 监听鼠标移动的事件
+    document.addEventListener('mousemove', () => {
+        document.querySelector("audio").play();
+    });
+    document.addEventListener('click', () => {
+        document.querySelector("audio").play();
+    });
+</script>
+{{ end }}

@@ -33,6 +33,13 @@ article:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
 
+## PAGINATION ##
+pagination:
+    newer_posts: Newer Posts
+    older_posts: Older Posts
+    previous: Previous
+    next: Next
+
 notFound:
     title:
         other: Not Found

@@ -16,4 +16,38 @@
         </span>
     </section>
     {{- end -}}
+
+    {{ if or .PrevInSection .NextInSection }}
+    <div class="pre-next">
+        {{ $.Scratch.Set "prev" .PrevInSection }}
+        {{ with .PrevInSection }}
+            {{ if eq .Params.archivePagination false }}
+                {{ $.Scratch.Set "prev" .PrevInSection }}
+            {{ end }}
+        {{ end }}
+        {{ with $.Scratch.Get "prev" }}
+            <a class="pre-next-btn bg" href="{{ .Permalink }}" data-tooltip="{{ .Title }}">
+                <i class="fa fa-angle-left"></i>
+                <span>{{ i18n "pagination.previous" }}</span>
+        {{ else }}
+            <a class="post-action-btn btn btn--disabled">
+        {{ end }}
+        </a>
+    
+        {{ $.Scratch.Set "next" .NextInSection }}
+        {{ with .NextInSection }}
+            {{ if eq .Params.archivePagination false }}
+                {{ $.Scratch.Set "next" .NextInSection }}
+            {{ end }}
+        {{ end }}
+        {{ with $.Scratch.Get "next" }}
+            <a class="pre-next-btn bg" href="{{ .Permalink }}" data-tooltip="{{ .Title }}">
+                <i class="fa fa-angle-left"></i>
+                <span>{{ i18n "pagination.next" }}</span>
+        {{ else }}
+            <a class="post-action-btn btn btn--disabled">
+        {{ end }}
+        </a>
+    </div>
+    {{ end }}
 </footer>

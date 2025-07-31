@@ -27,6 +27,13 @@ article:
     readingTime:
         other: "阅读时长: {{ .Count }} 分钟"
 
+## PAGINATION ##
+pagination:
+    newer_posts: 上一页
+    older_posts: 下一页
+    previous: 上一篇
+    next: 下一篇
+
 notFound:
     title:
         other: 404 错误

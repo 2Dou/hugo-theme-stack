@@ -33,6 +33,13 @@ article:
         one: "閱讀時間: {{ .Count }} 分鐘"
         other: "閱讀時間: {{ .Count }} 分鐘"
 
+## PAGINATION ##
+pagination:
+    newer_posts: 上一頁
+    older_posts: 下一頁
+    previous: 上一篇
+    next: 下一篇
+
 notFound:
     title:
         other: 404 錯誤
