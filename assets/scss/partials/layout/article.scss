@@ -14,18 +14,30 @@
         overflow: hidden;
 
         .article-header {
-            .article-image {
+            .article-image:not(.article-thumbnail-image) {
+                padding: var(--card-padding);
+
                 img {
                     height: auto;
                     width: 100%;
-                    max-height: 50vh;
+                    max-height: 48vh;
                     object-fit: cover;
                 }
             }
 
-            .article-details {
-                padding: var(--card-padding);
-                padding-bottom: 0;
+            .article-thumbnail-image {
+                padding: var(--card-padding) var(--card-padding) var(--card-padding) 0px;
+                margin-left: auto;
+                place-content: center;
+                max-width: 30%;
+
+                img {
+                    width: auto;
+                    height: auto;
+                    max-height: 18vh;
+                    max-width: 100%;
+                    object-fit: cover;
+                }
             }
         }
 

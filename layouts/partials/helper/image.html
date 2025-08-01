@@ -2,6 +2,9 @@
 {{ $imageField := default "image" .Context.Site.Params.featuredImageField }}
 {{ $imageValue := index .Context.Params $imageField }}
 
+{{ $thumbnailField := default "thumbnailImage" .Context.Site.Params.thumbnailImageField }}
+{{ $thumbnailValue := index .Context.Params $thumbnailField }}
+
 {{ if $imageValue }}
     <!-- If page has `image` field set -->
     {{ $result = merge $result (dict "exists" true) }}
@@ -27,7 +30,32 @@
         {{ end }}
 
     {{ end }}
+{{ else if $thumbnailValue }}
+    <!-- If page has `thumbnailImage` field set -->
+    {{ $result = merge $result (dict "exists" true) }}
+    {{ $result = merge $result (dict "isThumbnail" true) }}
+    {{ $url := urls.Parse $thumbnailValue }}
 
+    {{ if or (eq $url.Scheme "http") (eq $url.Scheme "https") }}
+        <!-- Is an external image -->
+        {{ $result = merge $result (dict "permalink" $thumbnailValue) }}
+    {{ else }}
+        {{ $pageResourceImage := .Context.Resources.GetMatch (printf "%s" ($thumbnailValue | safeURL)) }}
+        
+        {{ if $pageResourceImage }}
+            <!-- If image is found under page bundle -->
+            {{ $result = merge $result (dict "permalink" $pageResourceImage.RelPermalink) }}
+
+            <!-- Disable SVG image processing, not supported by Hugo -->
+            {{ if ne (path.Ext $thumbnailValue) ".svg" }}
+                {{ $result = merge $result (dict "resource" $pageResourceImage) }}
+            {{ end }}
+        {{ else }}
+            <!-- Can not find the image under page bundle. Could be a relative linked image -->
+            {{ $result = merge $result (dict "permalink" (relURL $thumbnailValue)) }}
+        {{ end }}
+
+    {{ end }}
 {{ else if and (ne .Type nil) (index .Context.Site.Params.defaultImage .Type) }}
     <!-- Type arg is set, check for defaultImage setting -->
     {{ $defaultImageSetting := index .Context.Site.Params.defaultImage .Type }}
