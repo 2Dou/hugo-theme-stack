@@ -27,7 +27,7 @@ article:
         other: 相關內容
 
     lastUpdatedOn:
-        other: 上次改過於
+        other: 改過於
 
     readingTime:
         one: "需要 {{ .Count }} 分鐘閱讀"
